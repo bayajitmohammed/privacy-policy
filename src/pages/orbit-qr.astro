@@ -1,312 +1,447 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// Orbit QR privacy policy. Self-contained page (own <html>, scoped styles) so
+// its theme does not affect the other policies that use Layout.astro.
+const base = import.meta.env.BASE_URL;
+const effective = "November 21, 2026";
+const email = "bayajitmohammed@gmail.com";
+
+const sections = [
+  ["glance", "At a glance"],
+  ["device", "What stays on your phone"],
+  ["permissions", "Permissions"],
+  ["analytics", "Usage analytics (optional)"],
+  ["crashes", "Crash reports (optional)"],
+  ["ads", "Ads"],
+  ["links", "Links, sharing and other apps"],
+  ["retention", "How long data is kept"],
+  ["rights", "Your choices and rights"],
+  ["more", "Children, security and transfers"],
+  ["changes", "Changes and contact"],
+];
 ---
 
-<Layout title="Privacy Policy - Orbit QR">
-  <strong>Privacy Policy</strong>
-  <p>
-    This privacy policy applies to the Orbit QR – QR Code Scanner &amp;
-    Generator app for mobile devices, together with any related services
-    operated by Bayajit Mohammed (collectively, the "Application"). Bayajit
-    Mohammed is hereby referred to as the "Service Provider".
-  </p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#181309" />
+    <meta
+      name="description"
+      content="How Orbit QR handles your data: QR contents and history stay on your device; analytics and crash reports are optional."
+    />
+    <title>Privacy Policy · Orbit QR</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}orbit-qr/icon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <svg class="orbit" viewBox="0 0 1200 520" aria-hidden="true">
+        <ellipse cx="600" cy="300" rx="560" ry="150" transform="rotate(-8 600 300)" />
+        <ellipse cx="600" cy="300" rx="420" ry="105" transform="rotate(-8 600 300)" />
+        <circle class="planet" cx="1050" cy="190" r="9" />
+      </svg>
+      <div class="wrap hero-inner">
+        <a class="brand" href="#top" id="top">
+          <img src={`${base}orbit-qr/icon.svg`} alt="" width="56" height="56" />
+          <span>Orbit QR</span>
+        </a>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          Orbit QR is a QR scanner and generator. What you scan and create stays
+          on your phone. This page explains the little that does leave it, and
+          how to switch that off.
+        </p>
+        <p class="meta">
+          Effective {effective} · Applies to Orbit QR for Android, version 1.1.0
+          and later
+        </p>
+      </div>
+    </header>
 
-  <br />
+    <div class="wrap layout">
+      <nav class="toc" aria-label="Contents">
+        <p class="toc-title">Contents</p>
+        <ol>
+          {sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}
+        </ol>
+      </nav>
 
-  <strong>Information Collection and Use</strong>
-  <p>
-    The Application collects information when you download and use it. This
-    information may include information such as
-  </p>
-  <ul>
-    <li>Your device's Internet Protocol address</li>
-    <li>
-      The pages of the Application that you visit, the time and date of your
-      visit, the time spent on those pages
-    </li>
-    <li>The time spent on the Application</li>
-    <li>your mobile operating system you use</li>
-  </ul>
+      <main>
+        <section id="glance">
+          <h2>At a glance</h2>
+          <div class="cards">
+            <article class="card">
+              <span class="tag local">On your phone</span>
+              <h3>Your QR codes</h3>
+              <p>
+                Scanned contents, codes you create, labels, colors, logos and
+                your history are stored only on your device. They are never
+                uploaded to us.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag optional">Optional</span>
+              <h3>Usage stats &amp; crash reports</h3>
+              <p>
+                Anonymous feature usage and crash diagnostics help improve the
+                app. They never include QR contents. Both are on by default and
+                you can turn them off in Settings.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag ads">Ads</span>
+              <h3>Banner ads by Google</h3>
+              <p>
+                Small banners on the Create and History screens are served by
+                Google AdMob, which asks for your consent where the law
+                requires it.
+              </p>
+            </article>
+          </div>
+          <p class="note">
+            There is no account and no sign-in. The developer does not run any
+            server that receives your scans, and does not sell your personal
+            information.
+          </p>
+        </section>
 
-  <br />
+        <section id="device">
+          <h2>What stays on your phone</h2>
+          <p>
+            Orbit QR is provided by Bayajit Mohammed ("we", "us"). The following
+            is processed and stored locally on your device and is not sent to
+            us:
+          </p>
+          <ul>
+            <li>
+              <b>Scan results</b>: the text, links, Wi-Fi details, contact cards
+              and other contents of codes you scan.
+            </li>
+            <li>
+              <b>Codes you create</b>: the details you enter (for example a
+              Wi-Fi password or a phone number), optional names, chosen colors
+              and any logo image you add.
+            </li>
+            <li>
+              <b>History</b>: scanned and created codes with their date and
+              time, kept until you delete them or clear the app's data. You can
+              stop saving new scans with the "Save scan history" setting.
+            </li>
+            <li>
+              <b>Settings</b>: your preferences, such as vibration, scan line,
+              batch capture, auto-open links, reduce motion and your template
+              order.
+            </li>
+            <li>
+              <b>Camera frames and photos</b>: the camera preview and any photo
+              you pick from your gallery are analyzed on the device to find a QR
+              code. They are not saved or uploaded by the app.
+            </li>
+          </ul>
+          <p>
+            Scanning, creating and history all work offline. Uninstalling the
+            app or clearing its data removes all of this from your phone.
+          </p>
+        </section>
 
-  <strong>Cookies and tracking technologies</strong>
-  <p>
-    The Application or its third-party SDKs may use cookies, SDKs, pixels, and
-    similar technologies to support functionality, analytics, or service
-    delivery. Where required by applicable law, the Service Provider will obtain
-    consent before using non-essential tracking technologies.
-  </p>
+        <section id="permissions">
+          <h2>Permissions</h2>
+          <div class="table" role="table" aria-label="Permissions">
+            <div class="row head" role="row">
+              <span role="columnheader">Permission</span>
+              <span role="columnheader">Why it's used</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Camera</span>
+              <span role="cell">To scan QR codes. Requested the first time the scanner opens.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Photos (Android 12 and older)</span>
+              <span role="cell">To scan a code from an image, or add a logo, that you choose.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Vibration</span>
+              <span role="cell">Haptic feedback when a code is found. Can be turned off.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Internet</span>
+              <span role="cell">For ads, optional analytics and crash reports. Core features work without it.</span>
+            </div>
+          </div>
+        </section>
 
-  <br />
+        <section id="analytics">
+          <h2>Usage analytics <small>optional · on by default</small></h2>
+          <p>
+            Orbit QR uses
+            <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Google Analytics for Firebase</a>
+            to understand which features are useful. The app sends events such
+            as:
+          </p>
+          <ul>
+            <li>which section you open (Scan, Create, History) and which features you use</li>
+            <li>the <em>type</em> of a code scanned or created, such as "URL" or "Wi-Fi", never its contents</li>
+            <li>actions such as copy, open, share as PNG or PDF, and deleting a history item</li>
+          </ul>
+          <p>
+            Firebase also automatically collects app and device information
+            (such as device model, operating system and app version), session
+            data, an app-instance identifier, approximate location derived from
+            your IP address, and, where permitted, your device's advertising ID.
+          </p>
+          <p class="never">
+            Analytics never include QR contents, names, passwords, photos,
+            logos or search text.
+          </p>
+          <p>
+            <b>Turn it off:</b> Settings → <em>Share usage analytics</em>.
+            Collection stops immediately and analytics data stored on your
+            device is reset. Data sent earlier is not deleted automatically;
+            see <a href="#rights">your rights</a>.
+          </p>
+        </section>
 
-  <strong>Your Rights</strong>
-  <p>
-    You may request access to, correction of, or deletion of your personal data
-    held by the Service Provider. To exercise these rights, or to withdraw
-    consent where processing is based on consent, contact the Service Provider
-    at bayajitmohammed@gmail.com.
-  </p>
+        <section id="crashes">
+          <h2>Crash reports <small>optional · on by default</small></h2>
+          <p>
+            If the app crashes or hits an error, <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Crashlytics</a>
+            sends a report so the problem can be fixed. A report contains the
+            error type, a stack trace, app version, device model, operating
+            system, and device state at the time (such as free memory and
+            orientation), linked to a random installation identifier. It does
+            not include QR contents.
+          </p>
+          <p>
+            <b>Turn it off:</b> Settings → <em>Share crash reports</em>.
+          </p>
+        </section>
 
-  <br />
+        <section id="ads">
+          <h2>Ads</h2>
+          <p>
+            Orbit QR is free and shows banner ads from
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google AdMob</a>
+            on the Create and History screens. To serve and measure ads, and to
+            prevent fraud, Google may collect your device's advertising ID, IP
+            address, device and app information, and how you interact with ads.
+            QR contents and history are never shared with advertisers.
+          </p>
+          <ul>
+            <li>
+              Where required, for example in the EEA, the UK and Switzerland,
+              you're asked for consent through Google's consent form before
+              personalized ads are shown.
+            </li>
+            <li>
+              You can change that choice any time in Settings →
+              <em>Ad privacy choices</em> (shown where it applies).
+            </li>
+            <li>
+              You can reset or delete your advertising ID, or opt out of ad
+              personalization, in your Android settings under Privacy → Ads.
+            </li>
+          </ul>
+          <p>
+            The analytics and crash report switches don't change your ad
+            consent. Ads have their own consent process.
+          </p>
+        </section>
 
-  <strong>Your California privacy rights (CCPA/CPRA)</strong>
-  <p>
-    If you are a California resident, you have the right to know what personal
-    information is collected, the right to delete personal information, the
-    right to opt out of the sale or sharing of personal information, and the
-    right to non-discrimination for exercising these rights. To exercise your
-    CCPA/CPRA rights, contact the Service Provider at bayajitmohammed@gmail.com.
-  </p>
+        <section id="links">
+          <h2>Links, sharing and other apps</h2>
+          <p>
+            When you open a scanned link, or turn on <em>Auto-open links</em>,
+            the link opens in your browser or in the app it belongs to. When you
+            share a code as a PNG or PDF, it goes to the app you pick from your
+            phone's share sheet. Those websites and apps have their own privacy
+            policies, and anything you send them is handled under those
+            policies, not this one.
+          </p>
+        </section>
 
-  <p>
-    The Service Provider may use the information you provide to send important
-    information, required notices, and, where permitted by law, marketing
-    communications.
-  </p>
+        <section id="retention">
+          <h2>How long data is kept</h2>
+          <ul>
+            <li><b>On your device:</b> until you delete it in the app, clear the app's data or uninstall.</li>
+            <li><b>Usage analytics:</b> kept by Google for no more than 14 months.</li>
+            <li><b>Crash reports:</b> kept by Google for 90 days.</li>
+            <li><b>Ads data:</b> handled under Google's own retention policies.</li>
+            <li><b>Emails you send us:</b> kept only as long as needed to answer your request.</li>
+          </ul>
+        </section>
 
-  <br />
+        <section id="rights">
+          <h2>Your choices and rights</h2>
+          <p>
+            You control most data directly in the app: delete history, stop
+            saving scans, and turn analytics and crash reports off. Depending on
+            where you live, including under the GDPR, UK GDPR and California
+            law (CCPA/CPRA), you may also have the right to access, correct or
+            delete personal data, to object to or restrict processing, to
+            withdraw consent, and to complain to your data protection
+            authority.
+          </p>
+          <p>
+            Because there is no account, we can't link analytics or crash data
+            to you by name. To make a request, email
+            <a href={`mailto:${email}`}>{email}</a> and we'll help as far as the
+            data can be identified. We'll never treat you differently for using
+            these rights.
+          </p>
+          <p>
+            Where the law requires a legal basis, we rely on your consent for
+            personalized ads, and on our legitimate interest in keeping the app
+            stable and improving it for analytics and crash reports. You can
+            object to these at any time with the switches above.
+          </p>
+        </section>
 
-  <p>
-    For a better experience while using the Application, the Service Provider
-    may require you to provide certain personally identifiable information,
-    including but not limited to bayajitmohammed@gmail.com. The information the
-    Service Provider requests will be retained and used as described in this
-    privacy policy.
-  </p>
+        <section id="more">
+          <h2>Children, security and transfers</h2>
+          <p>
+            <b>Children.</b> Orbit QR is not directed at children under 18,
+            and we don't knowingly collect personal information from them. If
+            you believe a child has provided personal information, contact us
+            and we'll delete it.
+          </p>
+          <p>
+            <b>Security.</b> Your history stays inside the app's private
+            storage on your device. Data sent to Google services travels over
+            encrypted connections. No method is perfectly secure, so keep your
+            phone locked to protect what's stored on it.
+          </p>
+          <p>
+            <b>International transfers.</b> Google may process analytics, crash
+            and ads data in countries other than yours, including the United
+            States, using safeguards such as Standard Contractual Clauses.
+          </p>
+        </section>
 
-  <br />
+        <section id="changes">
+          <h2>Changes and contact</h2>
+          <p>
+            If this policy changes, we'll update this page and its effective
+            date. For significant changes, we'll also tell you in the app or in
+            its Google Play release notes. Earlier versions are available on
+            request.
+          </p>
+          <div class="contact">
+            <div>
+              <p class="contact-title">Questions or requests?</p>
+              <p>Bayajit Mohammed, developer of Orbit QR</p>
+            </div>
+            <a class="button" href={`mailto:${email}?subject=Orbit%20QR%20privacy`}>{email}</a>
+          </div>
+        </section>
+      </main>
+    </div>
 
-  <strong>Third Party Access</strong>
-  <p>
-    Only aggregated, anonymized data is periodically transmitted to external
-    services to aid the Service Provider in improving the Application and their
-    service. The Service Provider may share your information with third parties
-    in the ways that are described in this privacy statement.
-  </p>
+    <footer class="wrap footer">
+      <span>© 2026 Bayajit Mohammed</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
 
-  <br />
+<style is:global>
+  :root {
+    --bg: #181309;
+    --surface: #251f15;
+    --surface-2: #30291e;
+    --line: #514532;
+    --text: #eee1d0;
+    --muted: #d5c4ac;
+    --amber: #ffb703;
+    --amber-ink: #422c00;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 17px/1.7 "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--amber); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  <strong>International Data Transfers</strong>
-  <p>
-    The Service Provider or its third-party service providers may transfer
-    personal data to countries outside your country of residence, including
-    outside the European Economic Area (EEA). Where applicable law requires
-    safeguards for international transfers, the Service Provider will use
-    appropriate mechanisms.
-  </p>
-  <ul>
-    <li>
-      Standard Contractual Clauses (SCCs) approved by the European Commission
-    </li>
-    <li>Adequacy decisions or other legally recognized transfer mechanisms</li>
-    <li>Your consent, where required and legally permitted</li>
-  </ul>
-  <p>
-    Data protection laws in other countries may differ from those in your
-    jurisdiction. Where required by law, the Service Provider will apply
-    appropriate safeguards and obtain any consent required for the transfer.
-  </p>
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .orbit { position: absolute; inset: -40px -10% auto; width: 120%; height: 120%; pointer-events: none; }
+  .orbit ellipse { fill: none; stroke: var(--amber); stroke-opacity: .16; stroke-width: 2; }
+  .orbit ellipse + ellipse { stroke-opacity: .08; }
+  .orbit .planet { fill: var(--amber); }
+  .hero-inner { position: relative; padding: 56px 24px 64px; }
+  .brand { display: inline-flex; align-items: center; gap: 14px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 20px; letter-spacing: -.01em; }
+  .brand img { border-radius: 14px; }
+  h1 { margin: 36px 0 0; font-size: clamp(44px, 7vw, 76px); line-height: 1; font-weight: 800; letter-spacing: -.04em; }
+  .lede { max-width: 640px; margin: 22px 0 0; font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); }
+  .meta { margin: 22px 0 0; font-size: 14px; font-weight: 600; color: var(--amber); }
 
-  <br />
+  .layout { display: grid; grid-template-columns: 240px 1fr; gap: 64px; padding-top: 48px; }
+  .toc { position: sticky; top: 24px; align-self: start; }
+  .toc-title { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; border-left: 2px solid var(--line); }
+  .toc li { counter-increment: toc; padding-left: 0; margin: 0; }
+  .toc a { display: block; padding: 6px 0 6px 16px; margin-left: -2px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; font-size: 14px; line-height: 1.4; }
+  .toc a::before { content: counter(toc, decimal-leading-zero); color: var(--amber); opacity: .7; font-weight: 700; margin-right: 10px; font-size: 12px; }
+  .toc a:hover { color: var(--text); border-left-color: var(--amber); }
 
-  <p>
-    Please note that the Application utilizes third-party services that have
-    their own Privacy Policy about handling data. Below are the links to the
-    Privacy Policy of the third-party service providers used by the Application:
-  </p>
-  <ul>
-    <li>
-      <a
-        href="https://policies.google.com/technologies/partner-sites"
-        target="_blank"
-        rel="noopener noreferrer">AdMob</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://firebase.google.com/support/privacy"
-        target="_blank"
-        rel="noopener noreferrer">Google Analytics for Firebase</a
-      >
-    </li>
-    <li>
-      <a
-        href="https://firebase.google.com/support/privacy/"
-        target="_blank"
-        rel="noopener noreferrer">Firebase Crashlytics</a
-      >
-    </li>
-  </ul>
+  main { min-width: 0; max-width: 720px; counter-reset: sec; }
+  section { padding-bottom: 40px; margin-bottom: 40px; border-bottom: 1px solid var(--line); }
+  section:last-child { border-bottom: 0; }
+  h2 { counter-increment: sec; margin: 0 0 16px; font-size: 28px; line-height: 1.2; font-weight: 800; letter-spacing: -.02em; }
+  h2::before { content: counter(sec, decimal-leading-zero); display: block; margin-bottom: 6px; font-size: 13px; letter-spacing: .1em; color: var(--amber); }
+  h2 small { display: inline-block; margin-left: 8px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--muted); vertical-align: middle; letter-spacing: 0; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 0; list-style: none; }
+  li { position: relative; padding-left: 26px; margin-bottom: 10px; }
+  main li::before { content: ""; position: absolute; left: 4px; top: .68em; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(255, 183, 3, .15); }
+  b { color: #fff4de; font-weight: 700; }
 
-  <br />
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .card h3 { margin: 12px 0 6px; font-size: 17px; line-height: 1.3; }
+  .card p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+  .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+  .tag.local { background: var(--amber); color: var(--amber-ink); }
+  .tag.optional { background: rgba(255, 183, 3, .14); color: var(--amber); }
+  .tag.ads { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+  .note { font-size: 15px; color: var(--muted); }
+  .never { padding: 14px 18px; border-left: 3px solid var(--amber); background: var(--surface); border-radius: 0 12px 12px 0; font-weight: 600; }
 
-  <p>
-    The Service Provider may disclose User Provided and Automatically Collected
-    Information:
-  </p>
-  <ul>
-    <li>
-      as required by law, such as to comply with a subpoena, or similar legal
-      process;
-    </li>
-    <li>
-      when they believe in good faith that disclosure is necessary to protect
-      their rights, protect your safety or the safety of others, investigate
-      fraud, or respond to a government request;
-    </li>
-    <li>
-      with their trusted services providers who work on their behalf, do not
-      have an independent use of the information the Service Provider discloses
-      to them, and have agreed to adhere to the rules set forth in this privacy
-      statement.
-    </li>
-  </ul>
+  .table { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .row { display: grid; grid-template-columns: 210px 1fr; gap: 16px; padding: 14px 18px; border-top: 1px solid var(--line); font-size: 15px; }
+  .row:first-child { border-top: 0; }
+  .row.head { background: var(--surface-2); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .row span:first-child { font-weight: 700; }
+  .row.head span:first-child { font-weight: 700; }
 
-  <br />
+  .contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; padding: 22px 24px; background: var(--amber); color: var(--amber-ink); border-radius: 20px; }
+  .contact p { margin: 0; }
+  .contact-title { font-weight: 800; font-size: 19px; }
+  .button { display: inline-block; padding: 12px 18px; background: var(--bg); color: var(--amber); border-radius: 12px; font-weight: 700; text-decoration: none; word-break: break-all; }
 
-  <strong>Opt-Out Rights</strong>
-  <p>
-    You can stop further collection of information from your mobile device by
-    uninstalling the Application. Uninstalling will stop the Application from
-    collecting data from your device, but it does not automatically delete
-    information that has already been transmitted to the Service Provider or to
-    third parties.
-  </p>
+  .footer { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 48px; font-size: 14px; color: var(--muted); }
 
-  <p>
-    To request deletion of your personal data, to withdraw consent, or to
-    exercise any of your rights, contact the Service Provider at
-    bayajitmohammed@gmail.com.
-  </p>
-
-  <br />
-
-  <strong>Data Retention Policy</strong>
-  <p>
-    The Service Provider retains personal data based on its necessity for the
-    stated purposes:
-  </p>
-  <ul>
-    <li>
-      User Provided Data: Retained for the duration of your use of the
-      Application plus 12 months thereafter, unless longer retention is required
-      by law
-    </li>
-    <li>
-      Automatically Collected Data: Retained for up to 24 months from
-      collection, unless longer retention is required for legal compliance
-    </li>
-    <li>
-      Aggregated and Anonymized Data: Retained indefinitely as it no longer
-      identifies you
-    </li>
-    <li>
-      Data required for legal compliance: Retained as long as required by
-      applicable law
-    </li>
-  </ul>
-  <p>
-    You may request deletion of your personal data, subject to any legal
-    obligation to retain it. If you want the Service Provider to delete User
-    Provided Data submitted through the Application, please contact them at
-    bayajitmohammed@gmail.com. Please note that some User Provided Data may be
-    required for the Application to function properly.
-  </p>
-
-  <br />
-
-  <strong>Children</strong>
-  <p>
-    The Application is not intended for children under 18 years of age, or such
-    higher age as required by applicable law. The Service Provider does not
-    knowingly solicit data from children or market the Application to them.
-  </p>
-
-  <br />
-
-  <p>
-    Where parental or guardian consent is required under applicable law, the
-    Application is not intended for use without that consent. The Service
-    Provider does not knowingly collect personally identifiable information from
-    children under 18 years of age in violation of applicable law. In the event
-    the Service Provider discovers that a child has provided personal
-    information, the Service Provider will immediately delete this from their
-    servers. If you are a parent or guardian and you are aware that your child
-    has provided the Service Provider with personal information, please contact
-    the Service Provider (bayajitmohammed@gmail.com) so that they will be able
-    to take the necessary actions.
-  </p>
-
-  <br />
-
-  <strong>Security</strong>
-  <p>
-    The Service Provider is concerned about safeguarding the confidentiality of
-    your information. The Service Provider provides physical, electronic, and
-    procedural safeguards to protect information the Service Provider processes
-    and maintains.
-  </p>
-
-  <br />
-
-  <strong>Data Breach Notification</strong>
-  <p>
-    If a data breach occurs that affects your personal data, the Service
-    Provider will notify you in accordance with applicable legal requirements,
-    including, where required, providing information about the nature of the
-    breach and the steps being taken to address it.
-  </p>
-
-  <br />
-
-  <strong>Changes</strong>
-  <p>
-    The Service Provider may update this Privacy Policy from time to time. The
-    Service Provider will notify you of material changes by posting the updated
-    Privacy Policy with an effective date. Where required by law, the Service
-    Provider will seek your consent to material changes before they take effect.
-  </p>
-
-  <br />
-
-  <p>
-    Previous versions of this Privacy Policy will be maintained and made
-    available upon request by contacting the Service Provider at
-    bayajitmohammed@gmail.com.
-  </p>
-
-  <br />
-
-  <p>This privacy policy is effective as of 2026-05-28</p>
-
-  <br />
-
-  <strong>Your Consent</strong>
-  <p>
-    Where processing is based on consent, you provide that consent by
-    affirmatively opting in to the relevant feature or action. You may withdraw
-    consent at any time without affecting processing carried out before
-    withdrawal. Processing based on other lawful bases is carried out as
-    described above.
-  </p>
-
-  <br />
-
-  <strong>Contact Us</strong>
-  <p>
-    If you have any questions regarding privacy while using the Application, or
-    have questions about the practices, please contact the Service Provider via
-    email at bayajitmohammed@gmail.com.
-  </p>
-
-  <hr />
-
-  <p>
-    This privacy policy page was generated by <a
-      href="https://app-privacy-policy-generator.nisrulz.com/"
-      target="_blank"
-      rel="noopener noreferrer">App Privacy Policy Generator</a
-    >
-  </p>
-</Layout>
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; gap: 8px; }
+    .toc { position: static; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; margin-bottom: 32px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .row { grid-template-columns: 1fr; gap: 4px; }
+    .hero-inner { padding: 40px 20px 48px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>

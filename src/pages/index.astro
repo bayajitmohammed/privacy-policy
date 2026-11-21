@@ -1,78 +1,407 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// Privacy policy index. Self-contained page (own <html>, scoped styles) so its
+// dark theme does not affect the individual policies that use Layout.astro.
+const base = import.meta.env.BASE_URL;
+const email = "me@bayajitmohammed.com";
 
-const apps = [
+type App = {
+  name: string;
+  subtitle: string;
+  href: string;
+  accent: string;
+  icon?: string;
+};
+
+const apps: App[] = [
   {
     name: "Roamglyph",
     subtitle: "Private Route Journal",
-    href: `${import.meta.env.BASE_URL}roamglyph`,
+    href: `${base}roamglyph`,
+    accent: "#5eead4",
   },
   {
     name: "Orbit QR",
     subtitle: "QR Code Scanner & Generator",
-    href: `${import.meta.env.BASE_URL}orbit-qr`,
+    href: `${base}orbit-qr`,
+    accent: "#ffb703",
+    icon: `${base}orbit-qr/icon.svg`,
   },
   {
     name: "Time Garden",
     subtitle: "Focus & Tasks",
-    href: `${import.meta.env.BASE_URL}time-garden`,
+    href: `${base}time-garden`,
+    accent: "#a3c48f",
+    icon: `${base}time-garden/icon.png`,
   },
 ];
-
-function initial(name: string) {
-  return name.charAt(0).toUpperCase();
-}
 ---
 
-<Layout title="App Privacy Policies">
-  <div class="not-prose min-h-screen bg-white px-6 py-12 max-w-2xl mx-auto">
-    <header class="mb-10">
-      <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">
-        App Privacy Policies
-      </h1>
-      <p class="mt-1 text-sm text-gray-500">
-        Privacy policies for my mobile apps.
-      </p>
-    </header>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1b1e26" />
+    <meta name="description" content="Privacy policies for my mobile apps." />
+    <title>App Privacy Policies</title>
+    <link rel="icon" href={`${base}favicon.ico`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32x32.png`} />
+    <link rel="icon" type="image/png" sizes="16x16" href={`${base}favicon-16x16.png`} />
+    <link rel="manifest" href={`${base}site.webmanifest`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="glow" aria-hidden="true"></div>
 
-    <ul class="space-y-3">
-      {
-        apps.map((app) => (
-          <li>
-            <a
-              href={app.href}
-              class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-5 py-4 hover:border-gray-300 hover:bg-gray-50 transition-colors group"
-            >
-              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-600 font-semibold text-lg select-none group-hover:bg-gray-200 transition-colors">
-                {initial(app.name)}
-              </div>
+    <main class="wrap">
+      <header class="hero">
+        <span class="badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6l7-3z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+          Privacy
+        </span>
+        <h1>App Privacy Policies</h1>
+        <p class="lede">
+          How each of my apps handles your data, explained in plain language.
+          Pick an app to read its policy.
+        </p>
+      </header>
 
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium text-gray-900 truncate">
-                  {app.name}
-                </p>
-                <p class="text-xs text-gray-500 truncate">{app.subtitle}</p>
-              </div>
+      <ul class="list">
+        {
+          apps.map((app, i) => (
+            <li style={`--accent: ${app.accent}; --i: ${i}`}>
+              <a class="card" href={app.href}>
+                <span class="icon">
+                  {app.icon ? (
+                    <img src={app.icon} alt="" width="52" height="52" loading="lazy" />
+                  ) : (
+                    <svg viewBox="0 0 52 52" aria-hidden="true" class="glyph">
+                      <rect width="52" height="52" rx="13" />
+                      <path d="M14 36c4-1 5-7 10-8s6 4 10 1 3-9 4-11" />
+                      <circle cx="14" cy="36" r="3" />
+                      <circle cx="38" cy="18" r="3" />
+                    </svg>
+                  )}
+                </span>
+                <span class="text">
+                  <span class="name">{app.name}</span>
+                  <span class="sub">{app.subtitle}</span>
+                </span>
+                <span class="cta">
+                  <span class="cta-label">Read policy</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
 
-              <div class="flex items-center shrink-0">
-                <svg
-                  class="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors ml-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</Layout>
+      <footer class="foot">
+        <span>{apps.length} apps</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Questions? <a href={`mailto:${email}`}>{email}</a></span>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+  }
+  body {
+    --bg: #1b1e26;
+    --surface: rgba(255, 255, 255, 0.035);
+    --surface-hover: rgba(255, 255, 255, 0.06);
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #eceef3;
+    --muted: #9aa1b2;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--bg);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--text);
+    font-family: "Manrope", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  .glow {
+    position: fixed;
+    inset: -20% 0 auto;
+    height: 70vh;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 50% at 25% 30%, rgba(94, 234, 212, 0.12), transparent 70%),
+      radial-gradient(35% 45% at 70% 20%, rgba(255, 183, 3, 0.09), transparent 70%),
+      radial-gradient(40% 50% at 55% 60%, rgba(163, 196, 143, 0.08), transparent 70%);
+    filter: blur(20px);
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 96px 24px 64px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .badge svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #5eead4;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  h1 {
+    margin: 20px 0 12px;
+    font-size: clamp(34px, 6vw, 48px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #ffffff 30%, #b9bfcc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .list {
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .list li {
+    animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i) * 70ms + 80ms);
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px 16px 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18%;
+    bottom: 18%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-2px);
+    background: var(--surface-hover);
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    box-shadow:
+      0 12px 32px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 4px color-mix(in srgb, var(--accent) 8%, transparent);
+    outline: none;
+  }
+  .card:hover::before,
+  .card:focus-visible::before {
+    opacity: 1;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    box-shadow: 0 6px 18px -6px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .icon img,
+  .icon svg {
+    display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+  }
+  .glyph rect {
+    fill: #134e4a;
+  }
+  .glyph path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2 5;
+  }
+  .glyph circle {
+    fill: var(--accent);
+  }
+
+  .text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .name {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.25s ease;
+  }
+  .cta svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s ease;
+  }
+  .card:hover .cta,
+  .card:focus-visible .cta {
+    color: var(--accent);
+  }
+  .card:hover .cta svg,
+  .card:focus-visible .cta svg {
+    transform: translateX(3px);
+  }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .foot a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.2s ease;
+  }
+  .foot a:hover {
+    border-color: var(--text);
+  }
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--muted);
+    opacity: 0.6;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .wrap {
+      padding-top: 64px;
+    }
+    .cta-label {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .list li {
+      animation: none;
+    }
+    .card,
+    .cta svg {
+      transition: none;
+    }
+    .card:hover {
+      transform: none;
+    }
+  }
+</style>

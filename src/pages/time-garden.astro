@@ -1,284 +1,465 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// Time Garden privacy policy. Self-contained page (own <html>, scoped styles)
+// so its forest theme does not affect the other policies that use Layout.astro.
+// Colors and fonts mirror the app's forest theme (lib/ui/core/forest_theme.dart).
+const base = import.meta.env.BASE_URL;
+const effective = "November 21, 2026";
+const email = "me@bayajitmohammed.com";
+
+const sections = [
+  ["glance", "At a glance"],
+  ["device", "What stays on your phone"],
+  ["permissions", "Permissions"],
+  ["notifications", "Notifications & sounds"],
+  ["nothing", "What we don't collect"],
+  ["backup", "Device backups"],
+  ["retention", "How long data is kept"],
+  ["rights", "Your choices and rights"],
+  ["more", "Children and security"],
+  ["changes", "Changes and contact"],
+];
 ---
 
-<Layout title="Privacy Policy - Time Garden: Focus & Tasks">
-  <strong>Privacy Policy</strong>
-  <p>
-    This privacy policy applies to the Time Garden: Focus &amp; Tasks app for
-    mobile devices, together with any related services operated by Bayajit
-    Mohammed (collectively, the "Application"). Bayajit Mohammed is hereby
-    referred to as the "Service Provider".
-  </p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#DDE2D5" />
+    <meta
+      name="description"
+      content="How Time Garden handles your data: your tasks, timer and sound mix stay on your device. No account, no analytics, no ads."
+    />
+    <title>Privacy Policy · Time Garden: Focus & Tasks</title>
+    <link rel="icon" type="image/png" href={`${base}time-garden/icon.png`} />
+    <link rel="apple-touch-icon" href={`${base}time-garden/icon.png`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handjet:wght@400;700&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body style={`--forest: url(${base}time-garden/pomodoro-forest.webp); --paper: url(${base}time-garden/paper-crumple.webp);`}>
+    <header class="hero" id="top">
+      <div class="wrap hero-inner">
+        <a class="brand" href="#top">
+          <img src={`${base}time-garden/icon.png`} alt="" width="56" height="56" />
+          <span>Time Garden</span>
+        </a>
+        <div class="timer" aria-hidden="true">25:00</div>
+        <h1>Privacy Policy</h1>
+        <p class="lede">
+          Time Garden is a quiet place to focus: a Pomodoro timer, a notebook
+          and an ambient sound mixer. Everything you put into it stays on your
+          phone. No account, no analytics, no ads.
+        </p>
+        <p class="meta">
+          Effective {effective} · Applies to Time Garden: Focus &amp; Tasks for
+          Android and iOS, version 2.2.0 and later
+        </p>
+      </div>
+    </header>
 
-  <br />
+    <div class="wrap layout">
+      <nav class="toc" aria-label="Contents">
+        <p class="toc-title">Contents</p>
+        <ol>
+          {sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}
+        </ol>
+      </nav>
 
-  <strong>Information Collection and Use</strong>
-  <p>
-    The Application collects information when you download and use it. This
-    information may include information such as
-  </p>
-  <ul>
-    <li>Your device's Internet Protocol address</li>
-    <li>
-      The pages of the Application that you visit, the time and date of your
-      visit, the time spent on those pages
-    </li>
-    <li>The time spent on the Application</li>
-    <li>your mobile operating system you use</li>
-  </ul>
+      <main>
+        <section id="glance">
+          <h2>At a glance</h2>
+          <div class="cards">
+            <article class="card">
+              <span class="tag local">On your phone</span>
+              <h3>Your notes &amp; sessions</h3>
+              <p>
+                Tasks, timer durations, session progress and your sound mix are
+                saved only on your device.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag none">Nothing sent</span>
+              <h3>No tracking</h3>
+              <p>
+                No analytics, crash reporting, advertising or third-party
+                tracking SDKs. The app doesn't contact any server.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag account">No account</span>
+              <h3>No sign-in</h3>
+              <p>
+                There's nothing to register. We never ask for your name, email
+                or any other personal details.
+              </p>
+            </article>
+          </div>
+          <p class="note">
+            The developer does not run any server that receives your data, and
+            does not sell, share or rent personal information to anyone.
+          </p>
+        </section>
 
-  <br />
+        <section id="device">
+          <h2>What stays on your phone</h2>
+          <p>
+            Time Garden is provided by Bayajit Mohammed ("we", "us"). The app
+            saves the following in its private storage on your device so you
+            can pick up where you left off. None of it is sent to us:
+          </p>
+          <ul>
+            <li>
+              <b>Notebook tasks</b>: the text of each task you write and
+              whether it's checked off. Deleting a task removes it.
+            </li>
+            <li>
+              <b>Timer settings</b>: your chosen lengths for work sessions,
+              short breaks and long breaks.
+            </li>
+            <li>
+              <b>Session progress</b>: the current session, how many work
+              sessions you've completed in the cycle, time remaining, and when
+              a running session is due to end, so the countdown survives the
+              app closing.
+            </li>
+            <li>
+              <b>Sound mix</b>: the volume you set for each ambient sound
+              (rainfall, campfire, keyboard, birds &amp; nature, river stream
+              and chalkboard writing).
+            </li>
+            <li>
+              <b>Small app preferences</b>, such as whether you've already been
+              asked about precise alarms.
+            </li>
+          </ul>
+          <p>
+            The ambient sounds are bundled with the app and play from your
+            device; nothing is streamed. Time Garden works fully offline.
+            Uninstalling the app or clearing its data removes everything above
+            from your phone.
+          </p>
+        </section>
 
-  <strong>Cookies and tracking technologies</strong>
-  <p>
-    The Application or its third-party SDKs may use cookies, SDKs, pixels, and
-    similar technologies to support functionality, analytics, or service
-    delivery. Where required by applicable law, the Service Provider will obtain
-    consent before using non-essential tracking technologies.
-  </p>
+        <section id="permissions">
+          <h2>Permissions</h2>
+          <div class="table" role="table" aria-label="Permissions">
+            <div class="row head" role="row">
+              <span role="columnheader">Permission</span>
+              <span role="columnheader">Why it's used</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Notifications</span>
+              <span role="cell">To show the running countdown and alert you when a session ends. Asked for on Android 13+ and iOS; you can say no.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Alarms &amp; reminders (Android 12+)</span>
+              <span role="cell">Lets the end-of-session alert ring on time while your phone sleeps. Optional; without it, the timer still rings in the app.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Vibration</span>
+              <span role="cell">To vibrate when a session ends.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Run at startup</span>
+              <span role="cell">Restores a scheduled session alert after your phone restarts.</span>
+            </div>
+            <div class="row" role="row">
+              <span role="cell">Background audio &amp; keep awake</span>
+              <span role="cell">Keeps your ambient mix playing, with media controls, while you use other apps or the screen is off.</span>
+            </div>
+          </div>
+          <p class="note">
+            Time Garden does not request the internet, camera, microphone,
+            location, contacts, photos or storage permissions.
+          </p>
+        </section>
 
-  <br />
+        <section id="notifications">
+          <h2>Notifications &amp; sounds</h2>
+          <p>
+            Notifications are created and scheduled on your device by the
+            operating system. They show your session type and remaining time
+            and offer Pause and Reset actions. While sounds are playing, your
+            phone's media controls and lock screen show that Time Garden is
+            playing ambience. This information is handled by Android or iOS on
+            your device and is not sent to us.
+          </p>
+          <p>
+            You can turn Time Garden's notifications off at any time in your
+            phone's settings, and stop the ambient mix with the Play/Off
+            control in the app.
+          </p>
+        </section>
 
-  <strong>Your Rights</strong>
-  <p>
-    You may request access to, correction of, or deletion of your personal data
-    held by the Service Provider. To exercise these rights, or to withdraw
-    consent where processing is based on consent, contact the Service Provider
-    at me@bayajitmohammed.com.
-  </p>
+        <section id="nothing">
+          <h2>What we don't collect</h2>
+          <p class="never">
+            Time Garden does not collect, transmit or share any personal or
+            usage data. That includes your tasks, focus history, device
+            identifiers, advertising ID, IP address, location and contacts.
+          </p>
+          <p>
+            The app contains no analytics, crash reporting or advertising
+            tools, and no third-party code that tracks you. Because nothing is
+            collected, nothing is shared with third parties, sold, or
+            transferred to other countries.
+          </p>
+          <p>
+            App stores such as Google Play and the App Store may collect
+            information about your download and device under their own privacy
+            policies. That is separate from the app and outside our control.
+          </p>
+        </section>
 
-  <br />
+        <section id="backup">
+          <h2>Device backups</h2>
+          <p>
+            If you have backups turned on for your phone, Android or iOS may
+            include Time Garden's saved data (such as your tasks and settings)
+            in your personal device backup, for example in your Google or
+            iCloud account. These backups are run by Google or Apple under your
+            account and their privacy policies; we can't access them. You can
+            manage this in your phone's backup settings.
+          </p>
+        </section>
 
-  <strong>Your California privacy rights (CCPA/CPRA)</strong>
-  <p>
-    If you are a California resident, you have the right to know what personal
-    information is collected, the right to delete personal information, the
-    right to opt out of the sale or sharing of personal information, and the
-    right to non-discrimination for exercising these rights. To exercise your
-    CCPA/CPRA rights, contact the Service Provider at me@bayajitmohammed.com.
-  </p>
+        <section id="retention">
+          <h2>How long data is kept</h2>
+          <ul>
+            <li><b>On your device:</b> until you delete it in the app, clear the app's data or uninstall.</li>
+            <li><b>On our side:</b> nothing, because the app doesn't send us any data.</li>
+            <li><b>Emails you send us:</b> kept only as long as needed to answer your request.</li>
+          </ul>
+        </section>
 
-  <p>
-    The Service Provider may use the information you provide to send important
-    information, required notices, and, where permitted by law, marketing
-    communications.
-  </p>
+        <section id="rights">
+          <h2>Your choices and rights</h2>
+          <p>
+            You're in control of everything Time Garden stores: edit or delete
+            tasks in the notebook, reset your timer, set sound volumes to zero,
+            or clear the app's data from your phone's settings to start fresh.
+          </p>
+          <p>
+            Depending on where you live, including under the GDPR, UK GDPR and
+            California law (CCPA/CPRA), you may have the right to access,
+            correct or delete personal data and to complain to your data
+            protection authority. Since we don't hold any personal data from
+            the app, there's normally nothing for us to provide or delete, but
+            you're always welcome to ask at
+            <a href={`mailto:${email}`}>{email}</a>.
+          </p>
+        </section>
 
-  <br />
+        <section id="more">
+          <h2>Children and security</h2>
+          <p>
+            <b>Children.</b> Time Garden collects no personal information from
+            anyone, including children. It's a general-audience focus tool and
+            isn't designed specifically for children.
+          </p>
+          <p>
+            <b>Security.</b> Your data stays inside the app's private storage
+            on your device, which other apps can't read. Keep your phone locked
+            to protect what's stored on it.
+          </p>
+        </section>
 
-  <p>
-    For a better experience while using the Application, the Service Provider
-    may require you to provide certain personally identifiable information,
-    including but not limited to me@bayajitmohammed.com. The information the
-    Service Provider requests will be retained and used as described in this
-    privacy policy.
-  </p>
+        <section id="changes">
+          <h2>Changes and contact</h2>
+          <p>
+            If Time Garden ever starts collecting data, or this policy changes
+            in another way, we'll update this page and its effective date
+            before the change takes effect. For significant changes, we'll also
+            tell you in the app or in its release notes. Earlier versions are
+            available on request.
+          </p>
+          <div class="contact">
+            <div>
+              <p class="contact-title">Questions or requests?</p>
+              <p>Bayajit Mohammed, developer of Time Garden</p>
+            </div>
+            <a class="button" href={`mailto:${email}?subject=Time%20Garden%20privacy`}>{email}</a>
+          </div>
+        </section>
+      </main>
+    </div>
 
-  <br />
+    <footer class="wrap footer">
+      <span>© 2026 Bayajit Mohammed</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
 
-  <strong>Third Party Access</strong>
-  <p>
-    Only aggregated, anonymized data is periodically transmitted to external
-    services to aid the Service Provider in improving the Application and their
-    service. The Service Provider may share your information with third parties
-    in the ways that are described in this privacy statement.
-  </p>
+<style is:global>
+  :root {
+    --bg: #dde2d5;
+    --surface: #f9f9f4;
+    --notebook: #f2eee2;
+    --action: #4e5b48;
+    --ink: #30362b;
+    --muted: #78816f;
+    --rule: #e0dccb;
+    --track: #e3e7dc;
+    --edge: #ddd8c8;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 20px/1.55 "Patrick Hand", "Comic Sans MS", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--action); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2.5px; }
+  :focus-visible { outline: 2px solid var(--action); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  <br />
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--forest) center 62% / cover no-repeat, #8a9181;
+    image-rendering: pixelated;
+    border-bottom: 4px solid var(--action);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(48, 54, 43, .25), rgba(48, 54, 43, .05) 40%, rgba(48, 54, 43, .35));
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; padding: 40px 24px 56px; text-align: center; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 6px 16px 6px 6px;
+    background: rgba(249, 249, 244, .9);
+    border-radius: 999px;
+    color: var(--ink); text-decoration: none; font-size: 22px;
+  }
+  .brand img { border-radius: 50%; image-rendering: pixelated; }
+  .timer {
+    margin: 28px auto 0;
+    font: 700 clamp(72px, 14vw, 132px)/1 "Handjet", monospace;
+    letter-spacing: .02em;
+    color: var(--surface);
+    text-shadow: 0 4px 0 rgba(48, 54, 43, .35);
+  }
+  h1 {
+    display: inline-block;
+    margin: 18px 0 0;
+    padding: 6px 22px;
+    background: var(--action);
+    color: var(--surface);
+    border-radius: 14px;
+    font: 700 clamp(30px, 4.5vw, 42px)/1.15 "Handjet", monospace;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .lede {
+    max-width: 640px;
+    margin: 22px auto 0;
+    padding: 18px 22px;
+    background: rgba(249, 249, 244, .92);
+    border-radius: 18px;
+    font-size: clamp(20px, 2.4vw, 23px);
+  }
+  .meta { margin: 16px 0 0; font-size: 17px; color: var(--surface); text-shadow: 0 1px 2px rgba(48, 54, 43, .7); }
 
-  <strong>International Data Transfers</strong>
-  <p>
-    The Service Provider or its third-party service providers may transfer
-    personal data to countries outside your country of residence, including
-    outside the European Economic Area (EEA). Where applicable law requires
-    safeguards for international transfers, the Service Provider will use
-    appropriate mechanisms.
-  </p>
-  <ul>
-    <li>
-      Standard Contractual Clauses (SCCs) approved by the European Commission
-    </li>
-    <li>Adequacy decisions or other legally recognized transfer mechanisms</li>
-    <li>Your consent, where required and legally permitted</li>
-  </ul>
-  <p>
-    Data protection laws in other countries may differ from those in your
-    jurisdiction. Where required by law, the Service Provider will apply
-    appropriate safeguards and obtain any consent required for the transfer.
-  </p>
+  .layout { display: grid; grid-template-columns: 250px 1fr; gap: 56px; padding-top: 48px; }
+  .toc {
+    position: sticky; top: 24px; align-self: start;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--edge);
+    border-radius: 18px;
+    box-shadow: 0 2px 0 var(--edge);
+  }
+  .toc-title { margin: 0 0 8px; font: 700 16px/1 "Handjet", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li { counter-increment: toc; margin: 0; padding: 0; }
+  .toc a { display: flex; gap: 10px; padding: 5px 0; color: var(--ink); text-decoration: none; font-size: 18px; line-height: 1.3; }
+  .toc a::before { content: counter(toc, decimal-leading-zero); font: 700 17px/1.3 "Handjet", monospace; color: var(--muted); }
+  .toc a:hover { color: var(--action); text-decoration: underline; }
 
-  <br />
+  main {
+    min-width: 0; max-width: 760px;
+    counter-reset: sec;
+    padding: 36px clamp(20px, 4vw, 48px) 12px;
+    background:
+      linear-gradient(rgba(242, 238, 226, .86), rgba(242, 238, 226, .86)),
+      var(--paper) center / cover,
+      var(--notebook);
+    border: 1px solid var(--edge);
+    border-radius: 22px;
+    box-shadow: 0 3px 0 var(--edge), 0 18px 40px -24px rgba(48, 54, 43, .45);
+  }
+  section { padding-bottom: 32px; margin-bottom: 32px; border-bottom: 2px dashed var(--edge); }
+  section:last-child { border-bottom: 0; margin-bottom: 0; }
+  h2 { counter-increment: sec; margin: 0 0 12px; font-size: 32px; line-height: 1.15; font-weight: 400; color: var(--action); }
+  h2::before { content: counter(sec, decimal-leading-zero); display: block; margin-bottom: 2px; font: 700 18px/1 "Handjet", monospace; letter-spacing: .12em; color: var(--muted); }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 0; list-style: none; }
+  li { position: relative; padding-left: 32px; margin-bottom: 10px; }
+  main li::before {
+    content: "";
+    position: absolute; left: 2px; top: .3em;
+    width: 18px; height: 18px;
+    border: 2px solid var(--action);
+    border-radius: 5px;
+    background: var(--surface);
+  }
+  main li::after {
+    content: "";
+    position: absolute; left: 8px; top: calc(.3em + 3px);
+    width: 6px; height: 10px;
+    border: solid var(--action);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+  }
+  b { color: var(--ink); font-weight: 400; text-decoration: underline; text-decoration-color: var(--muted); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 
-  <p>
-    The Service Provider may disclose User Provided and Automatically Collected
-    Information:
-  </p>
-  <ul>
-    <li>
-      as required by law, such as to comply with a subpoena, or similar legal
-      process;
-    </li>
-    <li>
-      when they believe in good faith that disclosure is necessary to protect
-      their rights, protect your safety or the safety of others, investigate
-      fraud, or respond to a government request;
-    </li>
-    <li>
-      with their trusted services providers who work on their behalf, do not
-      have an independent use of the information the Service Provider discloses
-      to them, and have agreed to adhere to the rules set forth in this privacy
-      statement.
-    </li>
-  </ul>
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+  .card { background: var(--surface); border: 1px solid var(--edge); border-radius: 18px; padding: 18px; box-shadow: 0 2px 0 var(--edge); }
+  .card h3 { margin: 10px 0 4px; font-size: 22px; font-weight: 400; line-height: 1.2; }
+  .card p { margin: 0; font-size: 18px; line-height: 1.4; color: var(--muted); }
+  .tag { display: inline-block; padding: 2px 12px; border-radius: 999px; font: 700 15px/1.5 "Handjet", monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .tag.local { background: var(--action); color: var(--surface); }
+  .tag.none { background: var(--track); color: var(--action); }
+  .tag.account { background: var(--notebook); color: var(--ink); border: 1px solid var(--edge); }
+  .note { font-size: 18px; color: var(--muted); }
+  .never { padding: 14px 18px; border-left: 4px solid var(--action); background: var(--surface); border-radius: 0 14px 14px 0; }
 
-  <br />
+  .table { border: 1px solid var(--edge); border-radius: 16px; overflow: hidden; background: var(--surface); margin-bottom: 14px; }
+  .row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 12px 18px; border-top: 1px solid var(--rule); font-size: 18px; line-height: 1.4; }
+  .row:first-child { border-top: 0; }
+  .row.head { background: var(--track); font: 700 16px/1.3 "Handjet", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .row span:first-child { color: var(--action); }
 
-  <strong>Opt-Out Rights</strong>
-  <p>
-    You can stop further collection of information from your mobile device by
-    uninstalling the Application. Uninstalling will stop the Application from
-    collecting data from your device, but it does not automatically delete
-    information that has already been transmitted to the Service Provider or to
-    third parties.
-  </p>
+  .contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; padding: 20px 24px; background: var(--action); color: var(--surface); border-radius: 18px; }
+  .contact p { margin: 0; }
+  .contact-title { font-size: 24px; }
+  .button { display: inline-block; padding: 10px 18px; background: var(--surface); color: var(--action); border-radius: 12px; text-decoration: none; word-break: break-all; }
+  .button:hover { background: var(--track); }
 
-  <p>
-    To request deletion of your personal data, to withdraw consent, or to
-    exercise any of your rights, contact the Service Provider at
-    me@bayajitmohammed.com.
-  </p>
+  .footer { display: flex; justify-content: space-between; gap: 16px; padding-top: 28px; padding-bottom: 48px; font-size: 17px; color: var(--muted); }
 
-  <br />
-
-  <strong>Data Retention Policy</strong>
-  <p>
-    The Service Provider retains personal data based on its necessity for the
-    stated purposes:
-  </p>
-  <ul>
-    <li>
-      User Provided Data: Retained for the duration of your use of the
-      Application plus 12 months thereafter, unless longer retention is required
-      by law
-    </li>
-    <li>
-      Automatically Collected Data: Retained for up to 24 months from
-      collection, unless longer retention is required for legal compliance
-    </li>
-    <li>
-      Aggregated and Anonymized Data: Retained indefinitely as it no longer
-      identifies you
-    </li>
-    <li>
-      Data required for legal compliance: Retained as long as required by
-      applicable law
-    </li>
-  </ul>
-  <p>
-    You may request deletion of your personal data, subject to any legal
-    obligation to retain it. If you want the Service Provider to delete User
-    Provided Data submitted through the Application, please contact them at
-    me@bayajitmohammed.com. Please note that some User Provided Data may be
-    required for the Application to function properly.
-  </p>
-
-  <br />
-
-  <strong>Children</strong>
-  <p>
-    The Application is not intended for children under 18 years of age, or such
-    higher age as required by applicable law. The Service Provider does not
-    knowingly solicit data from children or market the Application to them.
-  </p>
-
-  <br />
-
-  <p>
-    The Service Provider does not knowingly collect personally identifiable
-    information from children. The Service Provider encourages all children to
-    never submit any personally identifiable information through the Application
-    and/or Services. The Service Provider encourages parents and legal guardians
-    to monitor their children's Internet usage and to help enforce this Policy
-    by instructing their children never to provide personally identifiable
-    information through the Application and/or Services without their
-    permission. If you have reason to believe that a child has provided
-    personally identifiable information to the Service Provider through the
-    Application and/or Services, please contact the Service Provider
-    (me@bayajitmohammed.com) so that they will be able to take the necessary
-    actions. If you are under 18 years of age, your parent or guardian must
-    provide consent on your behalf where permitted by law.
-  </p>
-
-  <br />
-
-  <strong>Security</strong>
-  <p>
-    The Service Provider is concerned about safeguarding the confidentiality of
-    your information. The Service Provider provides physical, electronic, and
-    procedural safeguards to protect information the Service Provider processes
-    and maintains.
-  </p>
-
-  <br />
-
-  <strong>Data Breach Notification</strong>
-  <p>
-    If a data breach occurs that affects your personal data, the Service
-    Provider will notify you in accordance with applicable legal requirements,
-    including, where required, providing information about the nature of the
-    breach and the steps being taken to address it.
-  </p>
-
-  <br />
-
-  <strong>Changes</strong>
-  <p>
-    The Service Provider may update this Privacy Policy from time to time. The
-    Service Provider will notify you of material changes by posting the updated
-    Privacy Policy with an effective date. Where required by law, the Service
-    Provider will seek your consent to material changes before they take effect.
-  </p>
-
-  <br />
-
-  <p>
-    Previous versions of this Privacy Policy will be maintained and made
-    available upon request by contacting the Service Provider at
-    me@bayajitmohammed.com.
-  </p>
-
-  <br />
-
-  <p>This privacy policy is effective as of 2026-05-28</p>
-
-  <br />
-
-  <strong>Your Consent</strong>
-  <p>
-    Where processing is based on consent, you provide that consent by
-    affirmatively opting in to the relevant feature or action. You may withdraw
-    consent at any time without affecting processing carried out before
-    withdrawal. Processing based on other lawful bases is carried out as
-    described above.
-  </p>
-
-  <br />
-
-  <strong>Contact Us</strong>
-  <p>
-    If you have any questions regarding privacy while using the Application, or
-    have questions about the practices, please contact the Service Provider via
-    email at me@bayajitmohammed.com.
-  </p>
-
-  <hr />
-
-  <p>
-    This privacy policy page was generated by <a
-      href="https://app-privacy-policy-generator.nisrulz.com/"
-      target="_blank"
-      rel="noopener noreferrer">App Privacy Policy Generator</a
-    >
-  </p>
-</Layout>
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; gap: 20px; }
+    .toc { position: static; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 19px; }
+    .row { grid-template-columns: 1fr; gap: 2px; }
+    .hero-inner { padding: 32px 18px 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
